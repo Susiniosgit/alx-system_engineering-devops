@@ -11,7 +11,7 @@
   * What are the roles of the following reserved variables: HOME, PATH, PS1
   * What are special parameters
   * What is the special parameter $??
-** Expansions **
+**Expansions**
  * What is expansion and how to use them
  * What is the difference between single and double quotes and how to use them properly
  * How to do command substitution with $() and backticks
