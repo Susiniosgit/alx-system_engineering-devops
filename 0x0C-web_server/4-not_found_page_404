@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
-# Configure my Nginx server to have a custom 404 page with an specific string
-sudo apt-get update
-sudo apt-get -y install nginx
-sudo ufw allow 'Nginx HTTP'
-echo "Holberton School" > /var/www/html/index.html
-sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
-echo "Ceci n'est pas une page" > /var/www/html/404.html
-sudo sed -i '/listen 80 default_server/a error_page 404 /404.html;' /etc/nginx/sites-available/default
-sudo service nginx restart
+# Configure Nginx server so that /redirect_me is redirecting to another page
+STRING="Hello World!"
+REDIRECT="\n\tlocation /redirect_me {\n\t\treturn 301 https://youtu.be/dQw4w9WgXcQ;\n\t}\n"
+FILE="/etc/nginx/sites-available/default"
+apt-get -y update
+apt-get -y install nginx
+ufw allow 'Nginx HTTP'
+echo "$STRING" > /var/www/html/index.nginx-debian.html
+sed -i "37i\ $REDIRECT" "$FILE"
+service nginx restart
