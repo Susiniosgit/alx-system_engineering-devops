@@ -37,4 +37,5 @@ listen hbnb
     server 2112-web-01  35.231.188.109 check
     server 2112-web-02  35.243.226.55 check
 " >> /etc/haproxy/haproxy.cfg
-service haproxy restart
+
+sudo service haproxy start
